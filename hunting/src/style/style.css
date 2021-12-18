@@ -28,18 +28,6 @@ body {
   padding: 20px;
 }
 
-/* .navbarback {
-  color: black;
-  text-align: center;
-  text-decoration: none;
-  margin-top: 5px;
-  margin-left: 30px;
-  background-color: gray;
-  padding: 10px;
-  font-size: 30px;
-  border-radius: 30px;
-} */
-
 .search-container {
   width: 800px;
   height: 40px;
@@ -106,28 +94,6 @@ body {
   }
 }
 
-/* CSS */
-.button-34 {
-  background: #5e5df0;
-  border-radius: 999px;
-  box-shadow: #5e5df0 0 10px 20px -10px;
-  box-sizing: border-box;
-  color: #ffffff;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 24px;
-  opacity: 1;
-  outline: 0 solid transparent;
-  padding: 8px 18px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: fit-content;
-  word-break: break-word;
-  border: 0;
-}
-
 .backbutton {
   display: inline-block;
   cursor: pointer;
@@ -156,21 +122,3 @@ body {
   box-shadow: 0 3px #001e1d;
   transform: translateY(4px);
 }
-
-/*.backbutton:link,
-.backbutton:visited {
-  background-color: #5e5df0;
-  color: white;
-  padding: 14px;
-  padding-top: 29px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 999px;
-}
-
-.backbutton:hover,
-.backbutton:active {
-  background-color: #7979f5;
-}
-*/
