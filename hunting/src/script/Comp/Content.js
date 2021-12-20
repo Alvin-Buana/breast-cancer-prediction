@@ -12,13 +12,11 @@ class Content extends HTMLElement {
           <img src="${this._place.Link}" class="card-img-top" alt="${this._place.Place_Name}" style = "width: 24.9rem; height : 18rem;">
             <div class="card-body">
               <h5 class="card-title" >${this._place.Place_Name}</h5>
-                <p class="card-text">${
-                  this._place.Category ? this._place.Category : "-"
-                }</p>
-                <a href="#" class="btn  btn-success">Go to Detail</a>
+                <p class="card-text">${this._place.Category ? this._place.Category : '-'}</p>
+                <a href="../../../../found/index.html" class="btn  btn-success">Go to Detail</a>
               </div>
           </div>
       </div>`;
   }
 }
-customElements.define("c-content", Content);
+customElements.define('c-content', Content);
