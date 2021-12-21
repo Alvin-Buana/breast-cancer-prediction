@@ -10,6 +10,7 @@ h2,
 h3 {
   font-family: 'Itim', cursive;
 }
+
 p,
 a {
   font-family: 'Roboto', sans-serif;
@@ -135,6 +136,15 @@ a.social {
 .tentang,
 .fitur {
   background-color: #abd1c6;
+}
+
+section {
+  padding-top: 30px;
+  background-color: #abd1c6;
+}
+
+section#fitur {
+  padding-top: 40px;
 }
 
 footer {

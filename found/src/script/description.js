@@ -1,18 +1,17 @@
 class desc extends HTMLElement {
- 
-    set place(data) {
-        this._place = data;
-        this.render2();
-      }
-    connectedCallback() {
-        this.render();
-      }
-    
-    render() {
-      this.innerHTML = `
+  set place(data) {
+    this._place = data;
+    this.render2();
+  }
+  connectedCallback() {
+    this.render();
+  }
+
+  render() {
+    this.innerHTML = `
     
       <div class="jumbotron bground" style="background-image: url(https://cdn-2.tstatic.net/travel/foto/bank/images/pengunjung-seaworld-gambar.jpg);"">
-        <h1 class=" fw-bolder display-1">Sea world</h1>
+        <p class="fw-bold display-1">Sea world</p>
             <p class="fw-normal lead">Category : Taman Hiburan </p>
             <p class="fw-normal lead">Location : Jakarta </p>
         </div>
@@ -24,12 +23,11 @@ class desc extends HTMLElement {
         <br>
         <p class = "fw-bold display-6"> Other users also like : </p>
       `;
-      
-    }
-    render2() {
-      this.innerHTML=`
+  }
+  render2() {
+    this.innerHTML = `
       <div class="jumbotron bground" style="background-image: url(${this._place.Link});"">
-        <h1 class=" fw-bolder display-1">${this._place.Place_Name}</h1>
+        <p class="fw-bold display-1">${this._place.Place_Name}</p>
             <p class="fw-normal lead">Category : ${this._place.Category} </p>
             <p class="fw-normal lead">Location : ${this._place.City} </p>
         </div>
@@ -40,8 +38,7 @@ class desc extends HTMLElement {
          culpa qui officia deserunt mollit anim id est laborum.</p>
         <br>
         <p class = "fw-bold display-6"> Other users also like : </p>
-      `
-    }
-    
+      `;
+  }
 }
-customElements.define("desc-box", desc);
+customElements.define('desc-box', desc);

@@ -99,11 +99,12 @@ body {
   cursor: pointer;
   width: 9em;
   padding: 0.4rem 0.6rem;
-  background-color: #f9bc60;
-  color: #001e1d;
+  background-color: transparent;
+  color: #fffffe;
   border: none;
   border-radius: 10px;
   font-weight: bold;
+  font-size: 1.5rem;
   font-family: 'Roboto', sans-serif;
   text-transform: uppercase;
   text-align: center;
@@ -116,9 +117,12 @@ body {
   color: #abd1c6;
 }
 
-.backbutton:active {
-  background-color: #abd1c6;
-  color: #004643;
-  box-shadow: 0 3px #001e1d;
-  transform: translateY(4px);
+.btn-success {
+  background-color: #004643;
+  font-family: 'Roboto', sans-serif;
+}
+
+.btn-success:hover {
+  background-color: #f9bc60;
+  color: #001e1d;
 }

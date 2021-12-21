@@ -1,7 +1,6 @@
-import "./Content.js";
+import './Content.js';
 
 class ContentList extends HTMLElement {
-
   set tour(data) {
     this._tour = data;
     this.render();
@@ -24,15 +23,15 @@ class ContentList extends HTMLElement {
   }
 
   render() {
-    this.innerHTML = "";
-    
-    this.setAttribute("class", "row row-cols-1 row-cols-sm-2 row-cols-md-3");
+    this.innerHTML = '';
+
+    this.setAttribute('class', 'row');
     this._tour.forEach((item) => {
-      const receipeItemElement = document.createElement("c-content");
+      const receipeItemElement = document.createElement('c-content');
       receipeItemElement.place = item;
       this.appendChild(receipeItemElement);
     });
   }
 }
 
-customElements.define("content-list", ContentList);
+customElements.define('content-list', ContentList);

@@ -8,8 +8,8 @@ class SearchBar extends HTMLElement {
     this.render();
   }
 
-  set clickEvent(event) {
-    this._clickEvent = event;
+  set submitEvent(event) {
+    this._submitEvent = event;
     this.render();
   }
 
@@ -22,16 +22,16 @@ class SearchBar extends HTMLElement {
       <link rel="stylesheet" href="./src/style/style.css" />
      
       <div class="sticky-bg ">
-        <a  class="backbutton" href="../index.html">Beranda</a>
+        <a  class="backbutton" href="../index.html">WISHUNT</a>
         
-      <div id="search-container" class="search-container">
-           <input placeholder="Search Place" id="searchElement" type="search">
-           <button id="searchButtonElement" type="submit">Search</button>
-       </div>
+        <form id="searchBar" class="search-container">
+          <input placeholder="Search Place" id="searchElement" type="search">
+          <button id="searchButtonElement" type="submit">Search</button>
+        </form>
        </div>
        `;
 
-    this.shadowDOM.querySelector('#searchButtonElement').addEventListener('click', this._clickEvent);
+    this.shadowDOM.querySelector('#searchBar').addEventListener('submit', this._submitEvent);
   }
 }
 
