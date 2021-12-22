@@ -1,0 +1,33 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Itim', cursive;
+  font-size: 14px;
+  background-color: #abd1c6;
+  color: #001e1d;
+}
+
+.jumbotron {
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 90px;
+  color: #004643;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  font-size: 0.2rem;
+}
+
+.btn-success {
+  background-color: #004643;
+  font-family: 'Roboto', sans-serif;
+}
+
+.btn-success:hover {
+  background-color: #f9bc60;
+  color: #001e1d;
+}
