@@ -10,11 +10,15 @@ class desc extends HTMLElement {
   render() {
     this.innerHTML = `
     
-      <div class="jumbotron bground" style="background-image: url(https://cdn-2.tstatic.net/travel/foto/bank/images/pengunjung-seaworld-gambar.jpg);"">
-        <p class="fw-bold display-1">Sea world</p>
+      <div class="container-fluid text-center jumbotron" style="background-image: url(https://cdn-2.tstatic.net/travel/foto/bank/images/pengunjung-seaworld-gambar.jpg);"">
+        <div class="row">
+          <div class="col-md-12">  
+      <p class="fw-bold display-1">Sea world</p>
             <p class="fw-normal lead">Category : Taman Hiburan </p>
             <p class="fw-normal lead">Location : Jakarta </p>
+      </div>
         </div>
+          </div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
         labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
         nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 

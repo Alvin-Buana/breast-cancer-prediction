@@ -13,7 +13,9 @@ body {
 .jumbotron {
   background-size: cover;
   background-repeat: no-repeat;
+  padding-top: 90px;
   color: #004643;
+  font-family: 'Roboto', sans-serif;
 }
 
 h1 {
