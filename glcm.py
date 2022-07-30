@@ -2,6 +2,7 @@ import cv2
 import pandas as pd
 from skimage.feature import graycomatrix, graycoprops
 from sklearn import svm
+from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
 import os
 
@@ -14,6 +15,7 @@ props = [
 degrees = [0,45,90,135]
 
 DATASET_PATH = './tmp/dataset.csv'
+TEST_PATH = './tmp/test.csv'
 
 def kolom():
     """
@@ -104,3 +106,37 @@ def create_dataset(data_train_path):
     data.to_csv(DATASET_PATH, index=False)
     print("dataset created! Snapshot:")
     print(data[:5])
+
+def evaluate(data_test_path):
+    #basically melakukan hal yang sama dengan create dataset
+    #dari ini
+    data = pd.DataFrame()
+    for folder_name in os.listdir(data_test_path):
+        images = os.path.join(data_test_path,folder_name)
+        for image_name in os.listdir(images):
+            image = os.path.join(images, image_name)
+            glcm_result = glcm_per_image(image)
+            data = pd.concat([data,labeling(glcm_result,str(folder_name))],
+            ignore_index = True)
+    data.to_csv(TEST_PATH, index=False)
+    #sampai ini
+
+    #fit model seperti fungsi svm_predict
+    glcm_df = pd.read_csv(DATASET_PATH)
+    X = glcm_df.drop('label',axis=1)
+    Y = glcm_df['label']
+    clf = svm.SVC(decision_function_shape='ovr')
+    clf.fit(X, Y)
+    #sampai ini
+
+    test = pd.read_csv(TEST_PATH)
+    testX = test.drop('label',axis=1)
+    testy = test['label']
+
+    hasilX = clf.predict(testX)
+    confus = confusion_matrix(testy,hasilX)
+    ConfusionMatrixDisplay(confus,display_labels=('benign', 'malignant')).plot()
+    confusion = "./tmp/confus.jpg"
+    plt.savefig(confusion)
+    print("Akurasi: ",accuracy_score(testy,hasilX))
+    #return hasilX, confusion, accuracy_score(testy,hasilX)
