@@ -40,7 +40,7 @@ def glcm_per_image(img):
     file = img.split("/")[-1]
     img_read = cv2.imread(img,0)
     name_gray = "tmp/img/"+file[:-4]+" gray.jpg"
-    cv2.imwrite(name_gray,img_read)
+    # cv2.imwrite(name_gray,img_read)
     # image_disp = {
     #     'original'  : img,
     #     'gray'      : name_gray,
@@ -92,8 +92,11 @@ def svm_predict(img):
 def create_dataset(data_train_path):
     data = pd.DataFrame()
     for folder_name in os.listdir(data_train_path):
+        print(folder_name)
         images = os.path.join(data_train_path,folder_name)
+        # print(images)
         for image_name in os.listdir(images):
+            print(image_name)
             image = os.path.join(images, image_name)
             glcm_result = glcm_per_image(image)
             data = pd.concat([data,labeling(glcm_result,str(folder_name))],
