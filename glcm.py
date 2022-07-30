@@ -147,4 +147,5 @@ def evaluate(data_test_path):
     confusion = "./tmp/confus.jpg"
     plt.savefig(confusion)
     print("Akurasi: ",accuracy_score(testy,hasilX))
-    return hasilX, confusion, accuracy_score(testy,hasilX)
+
+    return  accuracy_score(testy,hasilX)
