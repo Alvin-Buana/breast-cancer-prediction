@@ -2,6 +2,8 @@ import cv2
 import pandas as pd
 from skimage.feature import graycomatrix, graycoprops
 from sklearn import svm
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
 import os
@@ -125,7 +127,13 @@ def evaluate(data_test_path):
     glcm_df = pd.read_csv(DATASET_PATH)
     X = glcm_df.drop('label',axis=1)
     Y = glcm_df['label']
-    clf = svm.SVC(decision_function_shape='ovr')
+    clf = make_pipeline(StandardScaler(), 
+        svm.SVC(gamma='auto',
+                kernel = 'rbf',
+                C = 10.0,
+                decision_function_shape='ovr'
+                ))
+    #clf = svm.SVC()
     clf.fit(X, Y)
     #sampai ini
 
@@ -139,4 +147,4 @@ def evaluate(data_test_path):
     confusion = "./tmp/confus.jpg"
     plt.savefig(confusion)
     print("Akurasi: ",accuracy_score(testy,hasilX))
-    #return hasilX, confusion, accuracy_score(testy,hasilX)
+    return hasilX, confusion, accuracy_score(testy,hasilX)
