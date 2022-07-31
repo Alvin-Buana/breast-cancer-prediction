@@ -3,23 +3,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Breast Cancer</title>
+    <title>Document</title>
 </head>
 <body>
-    <H2>Testing</H2>
-    <p>Please upload an image for testing</p>
+    <H2>VALIDATION</H2>
+    <p>Please upload a zip file for test data</p>
     <form method="POST" enctype="multipart/form-data" >
         {{form.hidden_tag()}}
         {{form.file()}}
         {{form.submit()}}
     </form>
-    {% if pred %}
-    <h2>Result</h2>
-    <img src="{{url_for('static', filename=img)}}" alt="">
-    <p>Data : {{x}}</p>
-    <p>Result : {{pred}}</p>
+    {% if result %}
+    <h2>Accuracy</h2>
+    <p>Accuracy : {{result}}</p>
+    <h2>Confusion Matrix</h2>
+    <img src="{{url_for('static', filename='confus.jpg')}}"  alt="">
     {% endif %}
     <a href="{{url_for('output')}}">Back to testing</a>
     <a href="{{url_for('uploadfile')}}">Back to training</a>
+    
 </body>
 </html>

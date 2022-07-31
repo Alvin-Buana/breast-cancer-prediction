@@ -16,8 +16,13 @@ props = [
         ]
 degrees = [0,45,90,135]
 
-DATASET_PATH = './tmp/dataset.csv'
-TEST_PATH = './tmp/test.csv'
+DATASET_PATH = 'dataset.csv'
+TEST_PATH = 'test.csv'
+out_dir = os.path.abspath(os.path.dirname(__file__))+'./tmp'
+static_dir = os.path.abspath(os.path.dirname(__file__))+'./static'
+def check_dir(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
 
 def kolom():
     """
@@ -83,7 +88,7 @@ def svm_predict(img):
     list of float (hasil glcm)
     string (label prediksi)
     """
-    glcm_df = pd.read_csv(DATASET_PATH)
+    glcm_df = pd.read_csv(out_dir+'/'+DATASET_PATH)
     X = glcm_df.drop('label',axis=1)
     Y = glcm_df['label']
     clf = svm.SVC(decision_function_shape='ovr')
@@ -105,7 +110,8 @@ def create_dataset(data_train_path):
             glcm_result = glcm_per_image(image)
             data = pd.concat([data,labeling(glcm_result,str(folder_name))],
             ignore_index = True)
-    data.to_csv(DATASET_PATH, index=False)
+    check_dir(out_dir)
+    data.to_csv(out_dir+'/'+DATASET_PATH, index=False,)
     print("dataset created! Snapshot:")
     print(data[:5])
 
@@ -120,11 +126,12 @@ def evaluate(data_test_path):
             glcm_result = glcm_per_image(image)
             data = pd.concat([data,labeling(glcm_result,str(folder_name))],
             ignore_index = True)
-    data.to_csv(TEST_PATH, index=False)
+    check_dir(out_dir)
+    data.to_csv(out_dir+'/'+TEST_PATH, index=False)
     #sampai ini
 
     #fit model seperti fungsi svm_predict
-    glcm_df = pd.read_csv(DATASET_PATH)
+    glcm_df = pd.read_csv(out_dir+'/'+DATASET_PATH)
     X = glcm_df.drop('label',axis=1)
     Y = glcm_df['label']
     clf = make_pipeline(StandardScaler(), 
@@ -137,14 +144,15 @@ def evaluate(data_test_path):
     clf.fit(X, Y)
     #sampai ini
 
-    test = pd.read_csv(TEST_PATH)
+    test = pd.read_csv(out_dir+'/'+TEST_PATH)
     testX = test.drop('label',axis=1)
     testy = test['label']
 
     hasilX = clf.predict(testX)
     confus = confusion_matrix(testy,hasilX)
     ConfusionMatrixDisplay(confus,display_labels=('benign', 'malignant')).plot()
-    confusion = "./tmp/confus.jpg"
+    confusion = static_dir+'/confus.jpg'
+    print("Confusion Path : "+ confusion)
     plt.savefig(confusion)
     print("Akurasi: ",accuracy_score(testy,hasilX))
 
